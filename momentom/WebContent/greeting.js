@@ -17,12 +17,19 @@ const greeting = document.querySelector(".js-greetings");
 const USER_LS = "currentUser",
 	  SHOWING_CN ="showing";
 
-
+function saveName(text)
+{
+	localStorage.setItem(USER_LS,text);
+}
 function handleSubmit(event)
 {
 	event.preventDefault();
 	// 이벤트가 발생하게 되면 root에서 부터 document까지 버블링이 일어나게 된다
 	// 그래서 기본값을 막아주기 위하여 event.preventDefault()를 실행한다.
+	const currentValue = input.value;
+	paintGreeting(currentValue);
+	saveName(currentValue);
+
 }
 
 function askForName()
