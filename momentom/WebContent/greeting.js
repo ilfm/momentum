@@ -2,6 +2,13 @@
  * greeting.js
  * - 날짜 : 20.12.21
  * - 설명 : 사용자 이름 저장하는 js
+ * 
+ * - 나오는 개념
+ * - querySelector, querySelectorAll
+ * - localStorage
+ * - classList
+ * - event.preventDefault() 
+ * 
  */
 
 const form = document.querySelector(".js-form");
@@ -64,11 +71,7 @@ function init()
 {
 	loadName();
 }
-
 init();
-
-
-
 
 /*
 	

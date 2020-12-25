@@ -1,5 +1,7 @@
 /**
- * 
+ *  clock.js
+ *  - 템플릿 리터럴
+ *  - setInterval()
  */
 
 const clockContainer = document.querySelector(".js-clock");
