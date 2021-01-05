@@ -5,6 +5,8 @@
  * 
  * 	appendChild()
  *  createElement()
+ *  forEach()
+ *  filter()
  */
 
 const toDoForm = document.querySelector(".js-toDoForm")
@@ -12,14 +14,38 @@ const toDoForm = document.querySelector(".js-toDoForm")
 ,     toDoList = document.querySelector(".js-toDoList");
 
 const TODOS_LS = 'toDos';
-const toDos = [];
 
+let toDos = [];
+//const toDos = [];
+
+//	deleteToDo()
+//	: 화면에서 toDo를 지우는 메소드
+function deleteToDo(event)
+{
+	const btn = event.target;
+	const li = btn.parentNode;
+	toDoList.removeChild(li);
+	
+	const cleanToDo = toDos.filter(function(toDo)
+	{
+		// toDo가 뭔지 의문
+		//console.log(toDo);
+		return toDo.id !== parseInt(li.id); 
+	});
+	toDos = cleanToDo;
+	saveToDos();
+}
+
+//	saveToDos()
+//	: toDo를 localStorage에 저장하는 메소드
 function saveToDos()
 {
 	localStorage.setItem(TODOS_LS,JSON.stringify(toDos));
 }
 // localStorage는 javascript data는 string만 저장 가능하다 
 
+//	paintToDo()
+//	: toDo를 화면에 표시하고 array에 담는 메소드
 function paintToDo(text)
 {
 	const toDoList = document.querySelector(".js-toDoList");
@@ -29,9 +55,11 @@ function paintToDo(text)
 	const newId = toDos.length + 1;
 	
 	delBtn.innerHTML ='&#10006;';
+	delBtn.addEventListener("click",deleteToDo);
 	span.innerText = text;
-	li.appendChild(span);
 	li.appendChild(delBtn);
+	li.appendChild(span);
+	
 	// 삭제를 위한 id, localStorage 저장을 위해
 	li.id = newId;
 	toDoList.appendChild(li);
@@ -50,6 +78,8 @@ function paintToDo(text)
 	
 }
 
+//	handleSubmit()
+//  : submit 이벤트 시 호출되는 메소드
 function handleSubmit(event)
 {
 	event.preventDefault();
@@ -57,6 +87,8 @@ function handleSubmit(event)
 	paintToDo(currentValue);
 }
 
+//	loadToDos()
+//	: localStotage에서 toDo들을 가져오는 메소드
 function loadToDos()
 {
 	const loadedToDos = localStorage.getItem(TODOS_LS);
@@ -67,7 +99,7 @@ function loadToDos()
 		const parsedToDos = JSON.parse(loadedToDos);
 		console.log(parsedToDos);
 		parsedToDos.forEach(function(toDo){
-			console.log(toDo.text);
+			paintToDo(toDo.text);
 		});
 	}
 }
@@ -80,3 +112,10 @@ function init()
 }
 
 init();
+
+/*
+	filter()
+	filter - 콜백함수에 지정된 조건에 맞는 요소를 새롭게 반환한다.
+
+
+*/
