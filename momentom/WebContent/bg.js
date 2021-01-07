@@ -1,8 +1,8 @@
-/* 
+/** 
  	bg.js
  	날짜 : 20-01-06
  	설명 : 백그라운드 배경 설정 js
- 	** animation 아직
+ 	** 사용자가 직접 바꿀수는 없을까
  
  */
 
@@ -11,11 +11,12 @@ const IMG_NUMBER = 2;
 
 function paintImage(imgNumber)
 {
-	// image도 객체인가?
+	// image도 객체인가? → ㅇㅇ
 	const image = new Image();
 	image.src = `images/${imgNumber}.jpg`;
-	image.classList.add("bgImage");
+	
 	body.appendChild(image);
+	image.classList.add("bgImage");
 }
 
 function getRandom()
