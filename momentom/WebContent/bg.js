@@ -14,6 +14,7 @@ function paintImage(imgNumber)
 	// image도 객체인가? → ㅇㅇ
 	const image = new Image();
 	image.src = `images/${imgNumber}.jpg`;
+	// image.src ='https://cdn.pixabay.com/photo/2019/12/11/18/06/snowman-4688913_1280.jpg';
 	
 	body.appendChild(image);
 	image.classList.add("bgImage");
