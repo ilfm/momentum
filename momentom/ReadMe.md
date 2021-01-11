@@ -1,11 +1,12 @@
-# Saving the User Name 
-* clock.js
+###3.2 Saving the User Name 
+
+#### clock.js
   - querySelector
   - date object
   - setInterval()
   - 템플릿 리터럴 ``
 
-* greeting.js
+#### greeting.js
   - localStorage 
   - querySelector
   - querySelectorAll
