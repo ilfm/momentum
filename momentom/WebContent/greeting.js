@@ -8,7 +8,7 @@
  * - localStorage
  * - classList
  * - event.preventDefault() 
- * 
+ *  
  */
 
 const form = document.querySelector(".js-form");
